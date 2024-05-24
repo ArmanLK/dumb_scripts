@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+SDB=$HOME/sdb
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    # selected=$(fd . $HOME/Music/ $HOME/Videos/ $SDB/Music/ --min-depth=1 --type=f  | fzf)
+    selected=$(fd . $HOME/Music/ $SDB/Music/ --min-depth=1 --type=f  | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+audacious "$selected" 2>/dev/null &
