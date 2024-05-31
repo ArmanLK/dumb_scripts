@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+# delete this (this is just the mount point of my external hard disk)
+SDB=$HOME/sdb
+
+if [[ $# -eq 1 ]]; then
+    selected=$(fd $1 --extension=pdf | fzf)
+else
+    selected=$(fd . $HOME/Documents/ $SDB/pdfs/ --min-depth=1 --extension=pdf | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+zathura "$selected" 2>/dev/null &
