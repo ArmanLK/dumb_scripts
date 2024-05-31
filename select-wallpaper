@@ -13,8 +13,8 @@ if [[ -z $selected ]];then
 fi
 
 # this was the fun part
-swaybg_runnung=$(pgrep swaybg)
-if [[ $swaybg_runnung ]]; then
+swaybg_running=$(pgrep swaybg)
+if [[ $swaybg_running ]]; then
     killall swaybg
 fi
 
