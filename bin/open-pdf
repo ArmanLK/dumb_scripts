@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 # delete this (this is just the mount point of my external hard disk)
 SDB=$HOME/sdb
