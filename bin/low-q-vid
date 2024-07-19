@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+#I have an old system with only 4 cores lol.
+threads=4
+
+if [[ $# < 2 ]]; then
+    echo usage input output
+    exit 1
+elif [[ $# == 3 ]]; then
+    threads=$3
+fi
+
+input=$1
+output=$2
+
+# It's not that low quality though.
+ffmpeg -i $input -codec:v libx265 -crf 27 -threads 4 $output
