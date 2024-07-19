@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-SDB=$HOME/sdb
+# find all the symlink inside Music directory
+syms=$(find ~/Videos/ -type l -exec readlink {} \;)
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd . $HOME/Videos/ $SDB/Videos/ --min-depth=1 --type=f  | fzf)
+    selected=$(find $HOME/Videos/ $syms -type f  | fzf)
 fi
 
 if [[ -z $selected ]]; then

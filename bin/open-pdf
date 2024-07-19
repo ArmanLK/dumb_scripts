@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-# delete this (this is just the mount point of my external hard disk)
-SDB=$HOME/sdb
+syms=$(find ~/Documents -type l -exec readlink {} \;)
 
 if [[ $# -eq 1 ]]; then
-    selected=$(fd $1 --extension=pdf | fzf)
+    selected=$(find $1 -name *.pdf | fzf)
 else
-    selected=$(fd . $HOME/Documents/ $SDB/pdfs/ --min-depth=1 --extension=pdf | fzf)
+    selected=$(find $HOME/Documents/ $syms -name *.pdf | fzf)
 fi
 
 if [[ -z $selected ]]; then

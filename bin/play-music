@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-SDB=$HOME/sdb
+syms=$(find ~/Music -type l -exec readlink {} \;)
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd . $HOME/Music/ $SDB/Music/ --min-depth=1 --type=f  | fzf)
+    selected=$(find $HOME/Music/ $syms -mindepth 1 -type f  | fzf)
 fi
 
 if [[ -z $selected ]]; then

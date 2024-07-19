@@ -5,7 +5,7 @@ if [[ $# -eq 1 ]]; then
 else if [[ $# > 1 ]]; then
     exit 1
 fi
-    selected=$(fd . $HOME/wallpaper/ --type=f | fzf)
+    selected=$(find $HOME/wallpaper/ -type f | fzf)
 fi
 
 if [[ -z $selected ]];then
