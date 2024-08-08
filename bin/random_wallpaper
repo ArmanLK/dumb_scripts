@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 2 ]]; then
+    wall=$2
+else
+    wall="$HOME/wallpaper/"
+fi
+
+# wut?
+selected=$wall/$(ls $wall | shuf | head -1)
+
+swaybg_running=$(pgrep swaybg)
+if [[ $swaybg_running ]]; then
+    killall swaybg
+fi
+
+echo $selected
+
+swaybg -m fill -i "$selected" 1>/dev/null 2>/dev/null &
