@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 ## this one is kinda copied from theprimeagen
+set -e
 
 if [[ $# -eq 1 ]]; then
     selected=$1

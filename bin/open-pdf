@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
 syms=$(find ~/Documents -type l -exec readlink {} \;)
 
@@ -6,10 +7,6 @@ if [[ $# -eq 1 ]]; then
     selected=$(find $1 -name *.pdf | fzf)
 else
     selected=$(find $HOME/Documents/ $syms -name *.pdf | fzf)
-fi
-
-if [[ -z $selected ]]; then
-    exit 0
 fi
 
 zathura "$selected" 2>/dev/null &

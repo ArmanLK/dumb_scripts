@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
 syms=$(find ~/Music -type l -exec readlink {} \;)
 
@@ -6,10 +7,6 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     selected=$(find $HOME/Music/ $syms -mindepth 1 -type f  | fzf)
-fi
-
-if [[ -z $selected ]]; then
-    exit 0
 fi
 
 audacious "$selected" 2>/dev/null &

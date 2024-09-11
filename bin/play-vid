@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
 # find all the symlink inside Music directory
 syms=$(find ~/Videos/ -type l -exec readlink {} \;)
@@ -7,10 +8,6 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     selected=$(find $HOME/Videos/ $syms -type f  | fzf)
-fi
-
-if [[ -z $selected ]]; then
-    exit 0
 fi
 
 mpv "$selected" 1>/dev/null 2>/dev/null &
