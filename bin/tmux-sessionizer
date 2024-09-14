@@ -1,15 +1,9 @@
 #!/usr/bin/env bash
 ## this one is kinda copied from theprimeagen
-set -e
-
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
     selected=$(find $HOME/projects $HOME/gitlab $HOME/github $HOME/godot -mindepth 1 -maxdepth 1 -type d  | fzf)
-fi
-
-if [[ -z $selected ]]; then
-    exit 0
 fi
 
 selected_name=$(basename "$selected" | tr . _)
