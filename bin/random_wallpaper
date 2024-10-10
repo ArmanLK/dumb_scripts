@@ -12,7 +12,7 @@ selected=$wall/$(ls $wall | shuf | head -1)
 
 swaybg_running=$(pgrep swaybg)
 if [[ $swaybg_running ]]; then
-    killall swaybg
+    kill $(pgrep swaybg)
 fi
 
 echo $selected
