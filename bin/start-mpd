@@ -1,0 +1,10 @@
+#!/bin/env bash
+
+mpd_pid=$(pgrep mpd)
+
+if [[ $mpd_pid ]];then
+    echo "mpd is already running"
+    exit 1
+fi
+
+mpd 1>/dev/null 2>/dev/null &
