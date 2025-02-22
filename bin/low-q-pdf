@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+if ![[ $# -eq 2 ]]; then
+    echo usage input output
+    exit 1
+fi
+
+echo "if you wish to change the quality and other stuff you must edit the script sorry about that"
+
+input=$1
+output=$2
+
+magick -density 150 -quality 60 -compress jpeg $input $output
